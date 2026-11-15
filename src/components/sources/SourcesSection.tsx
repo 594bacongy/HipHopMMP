@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { SectionHeader } from '@/components/layout/SectionHeader';
 import { SourceCard } from '@/components/sources/SourceCard';
 import { researchSources } from '@/data/sources';
-import { BookOpen, Search, Filter, Plus } from 'lucide-react';
+import { Search } from 'lucide-react';
 
 export const SourcesSection: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -22,38 +22,38 @@ export const SourcesSection: React.FC = () => {
   });
 
   return (
-    <section id="sources" className="py-24 border-t border-white/5 bg-[#0e0f13]">
+    <section id="sources" className="py-24 border-b border-white/10 bg-[#0d0d11]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          tag="06 // SCHOLARLY BIBLIOGRAPHY & CITATIONS"
-          title="Academic Sources & Foundational Literature"
-          subtitle="Grounded in peer-reviewed sociolinguistics, critical race theory, and Hip Hop-based pedagogy (HHBP)."
+          sectionNumber="06"
+          category="Academic References & Literature"
+          title="Scholarly Bibliography &"
+          italicWord="Course Texts."
+          subtitle="Grounded in canonical scholarship on Hip Hop Nation Language (HHNL), critical race theory, reality pedagogy, and multimodal literacies."
         />
 
         {/* Search & Filter Toolbar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
-          {/* Search bar */}
           <div className="relative w-full md:w-96">
-            <Search className="w-4 h-4 text-gray-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-[#63616e] absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search by author, title, or topic..."
+              placeholder="Filter by author, title, keyword..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-[#121316] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs font-mono text-white placeholder-gray-500 focus:outline-none focus:border-amber-400 transition-colors"
+              className="w-full bg-[#141419] border border-white/15 px-4 pl-10 py-2.5 font-editorial-mono text-xs text-white placeholder-[#63616e] focus:outline-none focus:border-[#c89643] transition-colors"
             />
           </div>
 
-          {/* Filter Pills */}
           <div className="flex flex-wrap items-center gap-1.5 w-full md:w-auto">
             {sourceTypes.map((type) => (
               <button
                 key={type}
                 onClick={() => setFilterType(type)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all ${
+                className={`px-3 py-1.5 font-editorial-mono text-xs uppercase tracking-wider transition-all ${
                   filterType === type
-                    ? 'bg-amber-400 text-black font-bold'
-                    : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5'
+                    ? 'bg-[#c89643] text-black font-bold'
+                    : 'bg-[#141419] text-[#9e9ba8] hover:text-white hover:bg-white/5 border border-white/10'
                 }`}
               >
                 {type}
@@ -69,16 +69,16 @@ export const SourcesSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Source Ingestion Protocol Box */}
-        <div className="p-6 rounded-2xl bg-[#14161c] border border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-mono text-gray-400">
+        {/* Bibliography Ingestion Note */}
+        <div className="p-5 bg-[#141419] border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-editorial-mono text-xs text-[#9e9ba8]">
           <div>
-            <span className="text-amber-400 font-bold block mb-0.5">
+            <span className="text-[#e0b064] font-bold block mb-0.5">
               BIBLIOGRAPHIC ARCHITECTURE:
             </span>
-            Sources are structured in <code className="text-white">src/data/sources.ts</code>. You can paste new citations, books, articles, or interviews directly into that file or through Antigravity.
+            As our team gathers peer-reviewed citations, they are appended to <code className="text-white">src/data/sources.ts</code>.
           </div>
-          <span className="text-gray-500">
-            {filteredSources.length} of {researchSources.length} Sources Displayed
+          <span className="text-[#63616e]">
+            {filteredSources.length} of {researchSources.length} Citations Cataloged
           </span>
         </div>
       </div>

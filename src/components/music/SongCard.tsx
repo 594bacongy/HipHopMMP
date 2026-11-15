@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { SongAnalysis } from '@/types';
-import { Disc, ArrowUpRight, Music, Calendar, Sparkles } from 'lucide-react';
+import { Disc, ArrowRight, Music, Calendar } from 'lucide-react';
 
 interface SongCardProps {
   song: SongAnalysis;
@@ -11,73 +11,67 @@ interface SongCardProps {
 
 export const SongCard: React.FC<SongCardProps> = ({ song, onOpenModal }) => {
   return (
-    <div className="group relative rounded-2xl bg-[#121316] border border-white/5 hover:border-amber-400/30 p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black">
+    <div className="bg-[#141419] border border-white/10 hover:border-[#c89643]/60 p-6 flex flex-col justify-between transition-all duration-200">
       <div>
-        {/* Album Cover Graphic Placeholder */}
-        <div className="relative aspect-square w-full rounded-xl bg-gradient-to-br from-[#181a22] to-[#0e0f14] border border-white/10 mb-6 flex flex-col items-center justify-center p-6 text-center overflow-hidden">
-          {/* Subtle concentric vinyl lines in CSS */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none">
-            <div className="w-56 h-56 rounded-full border border-white/20 flex items-center justify-center">
-              <div className="w-44 h-44 rounded-full border border-white/20 flex items-center justify-center">
-                <div className="w-32 h-32 rounded-full border border-white/20 flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-amber-500/20 border border-amber-400/40" />
-                </div>
-              </div>
-            </div>
+        {/* Top Sleeve Ledger Header */}
+        <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-6 text-xs font-editorial-mono text-[#9e9ba8]">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#c89643]" />
+            <span className="text-white font-bold uppercase">{song.id.toUpperCase()}</span>
           </div>
+          <span className="text-[#c89643]">
+            {song.status === 'planned' ? '[FIELDWORK FORTHCOMING]' : '[INGESTED]'}
+          </span>
+        </div>
+
+        {/* Vinyl Record Sleeve Representation */}
+        <div className="relative aspect-[4/3] w-full bg-[#0d0d11] border border-white/10 mb-6 flex flex-col items-center justify-center p-6 text-center overflow-hidden">
+          {/* Subtle vinyl grooves effect */}
+          <div className="absolute -right-12 top-1/2 -translate-y-1/2 w-48 h-48 rounded-full vinyl-grooves border-2 border-[#1c1c24] opacity-50 pointer-events-none" />
 
           <div className="relative z-10 flex flex-col items-center">
-            <div className="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center mb-3 group-hover:rotate-90 transition-transform duration-500">
-              <Disc className="w-6 h-6" />
+            <div className="w-10 h-10 rounded-full bg-[#1b1712] border border-[#c89643] text-[#e0b064] flex items-center justify-center mb-3">
+              <Disc className="w-5 h-5" />
             </div>
-            <span className="text-[11px] font-mono text-amber-400 font-semibold tracking-wider uppercase mb-1">
-              {song.status === 'planned' ? 'Analysis Slot' : 'Song Analysis'}
+            <span className="text-xs font-editorial-mono tracking-widest text-[#e0b064] uppercase font-bold mb-1">
+              {song.title}
             </span>
-            <span className="text-xs font-mono text-gray-400 max-w-[200px]">
-              {song.albumTitle}
+            <span className="text-xs text-[#9e9ba8] font-editorial-mono">
+              {song.artist} • {song.releaseYear}
             </span>
           </div>
         </div>
 
-        {/* Song Meta */}
-        <div className="flex items-center justify-between text-xs font-mono text-gray-500 mb-2">
-          <span className="text-amber-400/90 font-semibold uppercase tracking-wider">
-            {song.artist}
-          </span>
-          <span className="flex items-center gap-1">
-            <Calendar className="w-3 h-3" />
-            {song.releaseYear}
-          </span>
+        {/* Lyrical Context Summary */}
+        <div className="mb-4">
+          <div className="text-[11px] font-editorial-mono text-[#63616e] uppercase tracking-wider mb-1">
+            RESEARCH FOCUS:
+          </div>
+          <p className="text-xs text-[#9e9ba8] leading-relaxed font-light line-clamp-3">
+            {song.culturalContext}
+          </p>
         </div>
 
-        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-amber-300 transition-colors">
-          {song.title}
-        </h3>
-
-        <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-4 line-clamp-3 font-light">
-          {song.culturalContext}
-        </p>
-
-        {/* Lyrical Theme Pills */}
+        {/* Lyrical Theme Badges */}
         <div className="flex flex-wrap gap-1.5 mb-6">
-          {song.lyricalThemes.slice(0, 3).map((theme, idx) => (
+          {song.lyricalThemes.map((theme, idx) => (
             <span
               key={idx}
-              className="px-2 py-0.5 rounded text-[10px] font-mono bg-white/5 text-gray-300 border border-white/5"
+              className="text-[10px] font-editorial-mono px-2 py-0.5 bg-white/5 text-[#f5f2eb]/80 border border-white/5"
             >
-              {theme}
+              #{theme}
             </span>
           ))}
         </div>
       </div>
 
-      {/* Button to Trigger Full Analysis Inspector */}
+      {/* Button to open Liner Notes Modal */}
       <button
         onClick={() => onOpenModal(song)}
-        className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono font-semibold tracking-wider uppercase text-white bg-white/[0.04] hover:bg-amber-400 hover:text-black border border-white/10 hover:border-amber-400 transition-all"
+        className="w-full py-3 bg-[#191922] hover:bg-[#c89643] text-[#f5f2eb] hover:text-black border border-white/10 hover:border-[#c89643] font-editorial-mono text-xs uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-2"
       >
-        <span>Inspect Analysis Breakdown</span>
-        <ArrowUpRight className="w-4 h-4" />
+        <span>Open Liner Notes & Analysis</span>
+        <ArrowRight className="w-3.5 h-3.5" />
       </button>
     </div>
   );

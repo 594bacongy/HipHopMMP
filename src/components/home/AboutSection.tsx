@@ -2,152 +2,154 @@ import React from 'react';
 import { SectionHeader } from '@/components/layout/SectionHeader';
 import { projectInfo } from '@/data/projectInfo';
 import { teamMembers } from '@/data/team';
-import {
-  Compass,
-  Sparkles,
-  Users,
-  Radio,
-  BookOpen,
-  ShieldAlert,
-  Flame,
-  ArrowRight,
-} from 'lucide-react';
-
-const PILLAR_ICONS = [
-  Sparkles,
-  Users,
-  ShieldAlert,
-  BookOpen,
-  Flame,
-];
+import { ArrowDownRight, Compass, Feather } from 'lucide-react';
 
 export const AboutSection: React.FC = () => {
   return (
-    <section id="about" className="py-24 border-t border-white/5 bg-[#0a0a0c]">
+    <section id="about" className="py-24 border-b border-white/10 bg-[#0d0d11]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <SectionHeader
-          tag="01 // ABOUT OUR RESEARCH"
-          title="Beyond The Beats: A Living Cultural Movement"
-          subtitle="Our research examines how Hip Hop bridges individual consciousness to systemic societal forces across five foundational pillars."
+          sectionNumber="01"
+          category="Curatorial Framework & Manifesto"
+          title="More Than Sound Waves:"
+          italicWord="An Epistemic Movement."
+          subtitle="How our EDUC 218 research interrogates Hip Hop as an architecture of cultural sovereignty, community literacy, and political agency."
         />
 
-        {/* Central Argument Feature Box */}
-        <div className="relative rounded-3xl bg-gradient-to-br from-[#15171d] via-[#101115] to-[#0d0e12] border border-white/10 p-8 md:p-12 mb-16 shadow-2xl overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-[90px] pointer-events-none" />
+        {/* Curatorial Essay Block */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20 items-start">
+          <div className="lg:col-span-8 space-y-6 text-[#f5f2eb]">
+            <div className="flex items-center gap-2 font-editorial-mono text-xs text-[#c89643] uppercase tracking-widest">
+              <Compass className="w-4 h-4" />
+              <span>Project Manifesto // Central Argument</span>
+            </div>
 
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-8">
-              <div className="text-xs font-mono uppercase tracking-widest text-amber-400 mb-3 flex items-center gap-2">
-                <Compass className="w-4 h-4" />
-                <span>Central Project Thesis</span>
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-snug">
-                Hip Hop as an Epistemic Tradition of Resistance & Self-Definition
-              </h3>
-              <p className="text-gray-300 text-base leading-relaxed mb-6 font-light">
-                {projectInfo.centralIdea}
+            <p className="text-xl sm:text-2xl font-serif-display leading-relaxed text-[#f5f2eb] font-light italic">
+              "Hip Hop is more than entertainment. It is a cultural movement that allows individuals and communities to express themselves, develop their identities, build a sense of belonging, and address social and political issues."
+            </p>
+
+            <div className="text-sm sm:text-base text-[#9e9ba8] leading-relaxed space-y-4 font-light">
+              <p>
+                Too often, mainstream academic institutions and corporate media reduce Hip Hop to a passive commercial commodity—a collection of streaming statistics and radio hooks. In <strong className="text-white font-medium">EDUC 218: Hip Hop Nation Language and Literacy Practices</strong>, our group approaches Hip Hop as a living pedagogical tradition.
               </p>
-              <div className="p-4 rounded-xl bg-black/40 border border-white/5 text-sm text-gray-400 leading-relaxed font-mono">
-                <span className="text-amber-400 font-bold block mb-1">
-                  RESEARCH METHODOLOGY:
+              <p>
+                Through rhythm, rhyme schemes, aerosol art, and communal ciphers, marginalized communities have forged a resilient counter-epistemology. This digital exhibition exists to trace that lineage—connecting personal lived encounters to larger systemic questions of identity, linguistic autonomy, and social justice.
+              </p>
+            </div>
+
+            {/* Fieldwork note */}
+            <div className="p-5 rounded-lg bg-[#141419] border border-white/10 text-xs font-editorial-mono text-[#9e9ba8] leading-relaxed">
+              <span className="text-[#e0b064] font-bold block mb-1">
+                OUR RESEARCH METHODOLOGY:
+              </span>
+              {projectInfo.researchApproach}
+            </div>
+          </div>
+
+          {/* Right Column: Institutional Archival Ledger */}
+          <div className="lg:col-span-4 bg-[#141419] border border-white/15 p-6 space-y-5">
+            <div className="flex items-center justify-between border-b border-white/10 pb-3">
+              <span className="font-editorial-mono text-xs uppercase tracking-wider text-white font-bold">
+                Exhibition Registry
+              </span>
+              <span className="font-editorial-mono text-[10px] text-[#c89643]">
+                UMASS-EDUC218
+              </span>
+            </div>
+
+            <div className="space-y-4 text-xs font-editorial-mono">
+              <div>
+                <span className="text-[#63616e] block uppercase">INSTITUTION</span>
+                <span className="text-white font-medium">{projectInfo.institution}</span>
+              </div>
+              <div>
+                <span className="text-[#63616e] block uppercase">COURSE</span>
+                <span className="text-[#e0b064] font-medium">
+                  {projectInfo.course}: {projectInfo.courseTitle}
                 </span>
-                {projectInfo.researchApproach}
+              </div>
+              <div>
+                <span className="text-[#63616e] block uppercase">RESEARCH COLLECTIVE</span>
+                <span className="text-white">
+                  Kellen S., Roy K., Sophia S., Nicholas S.
+                </span>
+              </div>
+              <div>
+                <span className="text-[#63616e] block uppercase">FORMAT</span>
+                <span className="text-[#9e9ba8]">
+                  Evolving Multimodal Research Monograph
+                </span>
               </div>
             </div>
 
-            <div className="lg:col-span-4 bg-[#181a20]/80 rounded-2xl p-6 border border-white/10 backdrop-blur-sm">
-              <div className="text-xs font-mono uppercase text-gray-400 tracking-wider mb-4 pb-3 border-b border-white/10">
-                Institutional Context
-              </div>
-              <div className="space-y-3 text-xs font-mono">
-                <div>
-                  <span className="text-gray-500 block">COURSE</span>
-                  <span className="text-white font-semibold">
-                    {projectInfo.course}: {projectInfo.courseTitle}
-                  </span>
-                </div>
-                <div>
-                  <span className="text-gray-500 block">CAMPUS</span>
-                  <span className="text-amber-400 font-semibold">
-                    {projectInfo.institution}
-                  </span>
-                </div>
-                <div>
-                  <span className="text-gray-500 block">PROJECT TYPE</span>
-                  <span className="text-gray-300">
-                    Final Multimodal Digital Research Exhibition
-                  </span>
-                </div>
-                <div>
-                  <span className="text-gray-500 block">COLLABORATORS</span>
-                  <span className="text-gray-300">
-                    Kellen S., Roy K., Sophia S., Nicholas S.
-                  </span>
-                </div>
-              </div>
+            <div className="pt-4 border-t border-white/10 text-[11px] font-editorial-mono text-[#63616e]">
+              Fieldwork data, audio oral histories, and lyrical analyses are added iteratively throughout the semester.
             </div>
           </div>
         </div>
 
-        {/* The 5 Research Pillars */}
-        <div className="mb-16">
-          <div className="flex items-center justify-between mb-8">
-            <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-              The Five Pillars of Our Inquiry
+        {/* The 5 Pillars — Editorial Monograph Format */}
+        <div>
+          <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-8">
+            <h3 className="font-editorial-heading text-lg sm:text-xl text-white uppercase tracking-wider">
+              The Five Theoretical Pillars
             </h3>
-            <span className="text-xs font-mono text-gray-500">
-              FRAMEWORK ARCHITECTURE
+            <span className="text-xs font-editorial-mono text-[#c89643]">
+              FOUNDATIONAL INQUIRY
             </span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projectInfo.pillars.map((pillar, idx) => {
-              const Icon = PILLAR_ICONS[idx % PILLAR_ICONS.length];
+              const romanNumerals = ['I', 'II', 'III', 'IV', 'V'];
               return (
                 <div
                   key={idx}
-                  className="group relative rounded-2xl bg-[#121316]/90 border border-white/5 hover:border-amber-400/30 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/50"
+                  className="bg-[#141419] border border-white/10 p-6 flex flex-col justify-between hover:border-[#c89643]/50 transition-colors duration-200 group"
                 >
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-amber-400/10 border border-amber-400/20 text-amber-400 flex items-center justify-center group-hover:bg-amber-400 group-hover:text-black transition-colors duration-300">
-                      <Icon className="w-5 h-5" />
+                  <div>
+                    <div className="flex items-center justify-between pb-3 border-b border-white/5 mb-4 font-editorial-mono text-xs">
+                      <span className="text-[#c89643] font-bold">
+                        PILLAR {romanNumerals[idx]}
+                      </span>
+                      <ArrowDownRight className="w-3.5 h-3.5 text-[#63616e] group-hover:text-[#c89643] transition-colors" />
                     </div>
-                    <span className="font-mono text-xs text-gray-600 group-hover:text-amber-400/60 transition-colors">
-                      PILLAR 0{idx + 1}
-                    </span>
+
+                    <h4 className="text-base font-bold text-[#f5f2eb] mb-3 group-hover:text-[#e0b064] transition-colors">
+                      {pillar.title}
+                    </h4>
+
+                    <p className="text-xs sm:text-sm text-[#9e9ba8] leading-relaxed font-light">
+                      {pillar.description}
+                    </p>
                   </div>
 
-                  <h4 className="text-lg font-bold text-white mb-2 group-hover:text-amber-300 transition-colors">
-                    {pillar.title}
-                  </h4>
-                  <p className="text-gray-400 text-sm leading-relaxed font-light">
-                    {pillar.description}
-                  </p>
+                  <div className="mt-6 pt-3 border-t border-white/5 text-[10px] font-editorial-mono text-[#63616e]">
+                    Case studies & song analyses forthcoming.
+                  </div>
                 </div>
               );
             })}
 
-            {/* Sixth Card: Dynamic Research Note */}
-            <div className="rounded-2xl bg-gradient-to-br from-amber-500/10 via-[#121316] to-[#0e0f13] border border-amber-500/20 p-6 flex flex-col justify-between">
+            {/* 6th Tile: Living Research Note */}
+            <div className="bg-[#191922] border border-[#c89643]/30 p-6 flex flex-col justify-between">
               <div>
-                <span className="font-mono text-xs text-amber-400 uppercase tracking-widest block mb-2">
-                  CONTINUOUS SYNTHESIS
-                </span>
-                <h4 className="text-lg font-bold text-white mb-2">
-                  Evolving Fieldwork
+                <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-4 font-editorial-mono text-xs text-[#c89643]">
+                  <span>NOTE FROM THE CURATORS</span>
+                  <span>● ACTIVE</span>
+                </div>
+                <h4 className="text-base font-bold text-white mb-3">
+                  Iterative Ingest
                 </h4>
-                <p className="text-gray-400 text-xs leading-relaxed">
-                  As our research team conducts lyrical dissections, student interviews, and
-                  multimedia archival surveys, each pillar expands with direct fieldwork data.
+                <p className="text-xs text-[#9e9ba8] leading-relaxed font-light">
+                  Each pillar will host direct textual, musical, and ethnographic evidence as our interviews and lyrical deconstructions are completed.
                 </p>
               </div>
               <a
                 href="#themes"
-                className="inline-flex items-center gap-2 text-xs font-mono font-bold text-amber-400 hover:text-amber-300 mt-4 group"
+                className="mt-6 text-xs font-editorial-mono text-[#e0b064] hover:underline"
               >
-                <span>Explore Societal Themes</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                Inspect Societal Themes →
               </a>
             </div>
           </div>

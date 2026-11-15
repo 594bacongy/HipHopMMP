@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { SectionHeader } from '@/components/layout/SectionHeader';
 import { MediaCard } from '@/components/media/MediaCard';
 import { visualMediaItems, visualMediaCategories } from '@/data/visualMedia';
-import { Camera, Film, Layers, Filter } from 'lucide-react';
+import { Filter } from 'lucide-react';
 
 export const MediaSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('All');
@@ -15,28 +15,30 @@ export const MediaSection: React.FC = () => {
       : visualMediaItems.filter((item) => item.category === activeCategory);
 
   return (
-    <section id="media" className="py-24 border-t border-white/5 bg-[#0e0f13]">
+    <section id="media" className="py-24 border-b border-white/10 bg-[#0d0d11]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          tag="04 // VISUAL CULTURE & MULTIMEDIA"
-          title="Iconography, Style & Aerosol Cartography"
-          subtitle="Documenting album artwork, historical photographs, regional street murals, and cinematic video storytelling."
+          sectionNumber="04"
+          category="Visual Culture & Iconography"
+          title="Aerosol Murals & Album"
+          italicWord="Semiotics."
+          subtitle="Documenting street photography, wildstyle typography, sleeve iconography, and cinematic music video narratives."
         />
 
-        {/* Category Filters */}
+        {/* Category Filters Bar */}
         <div className="flex flex-wrap items-center gap-2 mb-10 pb-4 border-b border-white/10">
-          <div className="inline-flex items-center gap-1.5 text-xs font-mono text-gray-500 uppercase mr-2">
-            <Filter className="w-3.5 h-3.5 text-amber-400" />
-            <span>Filter Archive:</span>
+          <div className="inline-flex items-center gap-1.5 font-editorial-mono text-xs text-[#9e9ba8] uppercase mr-3">
+            <Filter className="w-3.5 h-3.5 text-[#c89643]" />
+            <span>Filter Specimen Index:</span>
           </div>
           {visualMediaCategories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium tracking-wide transition-all ${
+              className={`px-3.5 py-1.5 font-editorial-mono text-xs uppercase tracking-wider transition-all ${
                 activeCategory === category
-                  ? 'bg-amber-400 text-black font-bold shadow-md shadow-amber-500/20'
-                  : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 border border-white/5'
+                  ? 'bg-[#c89643] text-black font-bold'
+                  : 'bg-[#141419] text-[#9e9ba8] hover:text-white hover:bg-white/5 border border-white/10'
               }`}
             >
               {category}
@@ -51,15 +53,15 @@ export const MediaSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Curation Protocol Notice */}
-        <div className="p-6 rounded-2xl bg-[#14161c] border border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-mono text-gray-400">
+        {/* Fair-use Archival Notice */}
+        <div className="p-5 bg-[#141419] border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-editorial-mono text-xs text-[#9e9ba8]">
           <div>
-            <span className="text-amber-400 font-bold block mb-0.5">
-              FAIR USE & EDUCATIONAL ATTRIBUTION PROTOCOL:
+            <span className="text-[#e0b064] font-bold block mb-0.5">
+              FAIR-USE PEDAGOGICAL CURATION NOTE:
             </span>
-            All forthcoming archival imagery, album art sleeves, and video embeds will include full provenance citations and creator credits.
+            All visual plates and video excerpts are curated strictly for non-profit scholarly analysis within EDUC 218.
           </div>
-          <span className="shrink-0 text-gray-500">
+          <span className="shrink-0 text-[#63616e]">
             src/data/visualMedia.ts
           </span>
         </div>

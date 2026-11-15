@@ -1,44 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 @import "tailwindcss";
 
 :root {
-  --bg-primary: #0a0a0c;
-  --bg-secondary: #121316;
-  --bg-card: #16181d;
+  --bg-ink: #0d0d11;
+  --bg-surface: #141419;
+  --bg-elevated: #1a1a22;
   --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-accent: rgba(234, 179, 8, 0.3);
-  --text-primary: #f5f5f5;
-  --text-muted: #9ca3af;
-  --accent-gold: #eab308;
-  --accent-amber: #f59e0b;
+  --border-editorial: rgba(255, 255, 255, 0.15);
+  --text-primary: #f5f2eb;
+  --text-muted: #9e9ba8;
+  --text-faint: #63616e;
+  --brass: #c89643;
+  --brass-light: #e0b064;
+  --brass-dark: #8c6020;
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: #0a0a0c;
-  color: #f5f5f5;
+  background-color: #0d0d11;
+  color: #f5f2eb;
   color-scheme: dark;
 }
 
 body {
-  background-color: #0a0a0c;
-  color: #f5f5f5;
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  background-color: #0d0d11;
+  color: #f5f2eb;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Subtle editorial grain background */
-.editorial-grid {
-  background-size: 40px 40px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+/* Authentic Editorial Typography */
+.font-serif-display {
+  font-family: 'Instrument Serif', 'Times New Roman', Georgia, serif;
 }
 
-/* Gold glow effect */
-.gold-glow {
-  text-shadow: 0 0 20px rgba(234, 179, 8, 0.25);
+.font-editorial-heading {
+  font-family: 'Cinzel', 'Times New Roman', serif;
 }
 
-.box-glow {
-  box-shadow: 0 0 25px -5px rgba(234, 179, 8, 0.15);
+.font-editorial-mono {
+  font-family: 'Space Mono', Menlo, Monaco, monospace;
+}
+
+/* Subtle newspaper / exhibition dot-screen texture */
+.halftone-grain {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Archival stamp & linocut styling */
+.archival-stamp {
+  border: 1.5px solid currentColor;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transform: rotate(-1.5deg);
+  display: inline-block;
+}
+
+/* Physical vinyl groove simulation */
+.vinyl-grooves {
+  background: repeating-radial-gradient(
+    circle at center,
+    #111115 0,
+    #111115 2px,
+    #17171d 3px,
+    #111115 4px
+  );
+}
+
+/* Editorial divider lines */
+.editorial-line {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.15) 15%,
+    rgba(255, 255, 255, 0.15) 85%,
+    transparent
+  );
 }

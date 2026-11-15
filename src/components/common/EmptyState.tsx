@@ -1,64 +1,75 @@
 'use client';
 
 import React from 'react';
-import { Sparkles, FileText, PlusCircle, ArrowUpRight } from 'lucide-react';
+import { Bookmark, FileSpreadsheet, Sparkles, Feather } from 'lucide-react';
 
 interface EmptyStateProps {
-  title: string;
-  description: string;
-  actionNote?: string;
-  expectedFields?: string[];
-  statusLabel?: string;
+  dossierTitle: string;
+  leadCuratorNote: string;
+  methodologyDispatch: string;
+  fieldworkSlots: string[];
+  folioRef?: string;
 }
 
 export const EmptyState: React.FC<EmptyStateProps> = ({
-  title,
-  description,
-  actionNote = 'Research team is currently conducting fieldwork and qualitative analysis.',
-  expectedFields = [],
-  statusLabel = 'Fieldwork In Progress',
+  dossierTitle,
+  leadCuratorNote,
+  methodologyDispatch,
+  fieldworkSlots,
+  folioRef = 'DOC-EDUC218-UMASS',
 }) => {
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#121316]/80 p-8 md:p-12 text-center backdrop-blur-sm">
-      {/* Subtle background glow */}
-      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+    <div className="relative rounded-xl border border-white/15 bg-[#14141a] p-8 md:p-10 text-left overflow-hidden shadow-2xl">
+      {/* Top Ledger Strip */}
+      <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10 text-xs font-editorial-mono text-[#9e9ba8]">
+        <div className="flex items-center gap-3">
+          <span className="px-2.5 py-1 rounded border border-[#c89643]/40 bg-[#c89643]/10 text-[#e0b064] font-bold tracking-wider text-[11px] uppercase">
+            Curator Dispatch
+          </span>
+          <span className="tracking-widest uppercase">
+            {folioRef} // Fieldwork Dossier
+          </span>
+        </div>
+        <div className="flex items-center gap-2 text-[11px] text-[#9e9ba8]/80">
+          <Feather className="w-3.5 h-3.5 text-[#c89643]" />
+          <span>EDUC 218 Research Collective</span>
+        </div>
+      </div>
 
-      <div className="relative z-10 max-w-xl mx-auto flex flex-col items-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/20 mb-6">
-          <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-          {statusLabel}
+      {/* Main Narrative Area */}
+      <div className="pt-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="lg:col-span-7">
+          <h3 className="text-xl sm:text-2xl font-bold text-[#f5f2eb] tracking-tight mb-3">
+            {dossierTitle}
+          </h3>
+          <p className="text-sm text-[#9e9ba8] leading-relaxed mb-5 font-light">
+            {leadCuratorNote}
+          </p>
+          <div className="p-4 rounded-lg bg-black/40 border-l-2 border-[#c89643] text-xs font-editorial-mono text-[#e0b064]/90 leading-relaxed">
+            <span className="font-bold text-white block mb-1">
+              DISPATCH FROM THE TEAM:
+            </span>
+            {methodologyDispatch}
+          </div>
         </div>
 
-        <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight mb-3">
-          {title}
-        </h3>
-
-        <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-6">
-          {description}
-        </p>
-
-        {expectedFields.length > 0 && (
-          <div className="w-full text-left bg-[#0c0d10] border border-white/5 rounded-xl p-4 mb-6">
-            <div className="text-xs font-mono text-gray-400 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
-              <FileText className="w-3.5 h-3.5 text-amber-400" />
-              Incoming Data Schema & Components
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {expectedFields.map((field, idx) => (
-                <span
-                  key={idx}
-                  className="text-xs bg-white/5 text-gray-300 px-2.5 py-1 rounded-md border border-white/5 font-mono"
-                >
-                  {field}
-                </span>
-              ))}
-            </div>
+        {/* Archival Checkpoints / Forthcoming Ingest */}
+        <div className="lg:col-span-5 bg-[#191922] p-5 rounded-lg border border-white/10">
+          <div className="text-[11px] font-editorial-mono text-[#9e9ba8] uppercase tracking-wider mb-3 flex items-center justify-between">
+            <span>Forthcoming Ingest Criteria</span>
+            <span className="text-[#c89643] font-bold">Phase 1</span>
           </div>
-        )}
-
-        <div className="flex items-center gap-2 text-xs font-mono text-gray-400">
-          <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-          <span>{actionNote}</span>
+          <ul className="space-y-2 text-xs font-editorial-mono text-[#f5f2eb]/90">
+            {fieldworkSlots.map((slot, idx) => (
+              <li key={idx} className="flex items-center gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#c89643]/80" />
+                <span className="line-clamp-1">{slot}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-4 pt-3 border-t border-white/10 text-[10px] font-editorial-mono text-[#9e9ba8]/70">
+            Entries are added via <code className="text-[#e0b064]">src/data/</code> without altering design architecture.
+          </div>
         </div>
       </div>
     </div>
