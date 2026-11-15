@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #0a0a0c;
+  --bg-secondary: #121316;
+  --bg-card: #16181d;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-accent: rgba(234, 179, 8, 0.3);
+  --text-primary: #f5f5f5;
+  --text-muted: #9ca3af;
+  --accent-gold: #eab308;
+  --accent-amber: #f59e0b;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #0a0a0c;
+  color: #f5f5f5;
+  color-scheme: dark;
+}
+
+body {
+  background-color: #0a0a0c;
+  color: #f5f5f5;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  overflow-x: hidden;
+}
+
+/* Subtle editorial grain background */
+.editorial-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+/* Gold glow effect */
+.gold-glow {
+  text-shadow: 0 0 20px rgba(234, 179, 8, 0.25);
+}
+
+.box-glow {
+  box-shadow: 0 0 25px -5px rgba(234, 179, 8, 0.15);
+}
